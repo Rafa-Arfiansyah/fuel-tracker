@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/output.css">
+</head>
+<body>
+    <div class="relative px-6 py-24 overflow-hidden bg-gradient-to-r from-purple-700 via-purple-500 to-purple-800 isolate sm:py-32 lg:px-8">
+        <div class="absolute inset-0 opacity-50 bg-gradient-to-r from-purple-600 via-transparent to-purple-700"></div>
+        <div class="absolute bg-purple-300 rounded-full top-1/4 left-1/3 w-96 h-96 opacity-20 blur-2xl"></div>
+        <div class="absolute bg-purple-400 rounded-full top-3/4 right-1/3 w-80 h-80 opacity-10 blur-2xl"></div>
+      
+        <div class="relative max-w-2xl mx-auto text-center">
+          <h2 class="text-4xl font-semibold tracking-tight text-white text-balance sm:text-5xl">Fuel Consumption Calculator</h2>
+          <p class="mt-2 text-gray-200 text-lg/8">Hitung konsumsi bahan bakar untuk perjalanan Anda.</p>
+        </div>
+      
+        <form id="fuelForm" class="relative max-w-xl p-8 mx-auto mt-16 bg-white rounded-lg shadow-lg sm:mt-20 bg-opacity-80">
+          <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+            <div class="sm:col-span-2">
+              <label for="distance" class="block font-semibold text-gray-900 text-sm/6">Jarak Tempuh (km)</label>
+              <div class="mt-2.5">
+                <input type="number" name="distance" id="distance" placeholder="Masukkan jarak tempuh" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="fuel" class="block font-semibold text-gray-900 text-sm/6">Total Bahan Bakar yang Digunakan (liter)</label>
+              <div class="mt-2.5">
+                <input type="number" name="fuel" id="fuel" placeholder="Masukkan total bahan bakar" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6">
+              </div>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="result" class="block font-semibold text-gray-900 text-sm/6">Konsumsi Bahan Bakar (liter/km)</label>
+              <div class="mt-2.5">
+                <textarea id="result" rows="4" readonly class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6" placeholder="Hasil akan muncul di sini"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="mt-10">
+            <button type="button" onclick="calculateConsumption()" class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Hitung Konsumsi Bahan Bakar</button>
+          </div>
+        </form>
+      </div>
+      
+      <script>
+        function calculateConsumption() {
+          const distance = document.getElementById('distance').value;
+          const fuel = document.getElementById('fuel').value;
+          const resultBox = document.getElementById('result');
+          
+          if (distance && fuel) {
+            const consumption = fuel / distance;
+            resultBox.value = `Konsumsi Bahan Bakar: ${consumption.toFixed(2)} liter/km`;
+          } else {
+            resultBox.value = "Mohon isi semua kolom input.";
+          }
+        }
+      </script>
+      
+      
+</body>
+</html>
